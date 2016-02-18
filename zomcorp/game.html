@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zomcorp - Game</title>
+    <link rel="stylesheet" type="text/css" href="Resources/styles/zomcorp.css">
+    <!--phaser framework-->
+    <script src="Resources/lib/phaser.js" type="application/javascript"></script>
+
+    <script type="text/javascript" src="Resources/lib/pathfinding-browser.min.js"></script>
+      <!--Game states-->
+    <script src="Resources/src/zomBoot.js" type="application/javascript"></script>
+    <script src="Resources/src/zomPreload.js" type="application/javascript"></script>
+    <script src="Resources/src/zomMenu.js" type="application/javascript"></script>
+    <script src="Resources/src/zomGame.js" type="application/javascript"></script>
+    <!--Game Objects-->
+    <script src="Resources/src/Objects/ZomEnemy.js" type="application/javascript"></script>
+    <script src="Resources/src/Objects/ZomGun.js" type="application/javascript"></script>
+    <script src="Resources/src/Objects/ZomPlayer.js" type="application/javascript"></script>
+    <script src="Resources/src/Objects/ZomPowerUp.js" type="application/javascript"></script>
+    <script src="Resources/src/Objects/ZomBarrel.js" type="application/javascript"></script>
+    <script src="Resources/src/Objects/ZomBullet.js" type="application/javascript"></script>
+    <script src="Resources/src/Objects/ZomDoor.js" type="application/javascript"></script>
+
+</head>
+
+<body>
+<img style="margin-top: -10px; margin-left: -3px" src="Resources/Images/zomcorp_logo.png">
+
+<!--<img src="Resources/Images/player.PNG">-->
+
+<hr style="margin: 0px">
+
+<div style="float: left; margin: 10px; text-align: center">
+    <hr style="margin: 0px">
+    <a href="index.html" class="nav">Home</a>
+    <hr style="margin: 0px">
+    <a style="color: red" class="nav">Game</a>
+    <hr style="margin: 0px">
+    <a href="team.html" class="nav">Team</a>
+    <hr style="margin: 0px">
+    <a href="blog.html" class="nav">Blog</a>
+    <br>
+    <img src="Resources/Images/banner.PNG">
+</div>
+<div class="vertLine"></div>
+
+<div class="content">
+    <script>
+        var game = new Phaser.Game(800,600, Phaser.AUTO, 'container');
+
+        game.state.add('zomBoot',zomBoot);
+        game.state.add('zomPreload',zomPreload);
+        game.state.add('zomMenu',zomMenu);
+        game.state.add('zomGame',zomGame);
+        game.state.start('zomBoot');
+    </script>
+    <div id="container"></div>
+    <p>
+        This page is where the finished product will be hosted as well as the game design. So for now im going to detail the game features that are being implemented.
+    </p>
+    <h1>
+        Game Design
+    </h1>
+    <ul type="disc">
+        <li><a href="#Game Idea">Game Idea and Research</a></li>
+        <li><a href="#Game Play">Game Play</a></li>
+        <li><a href="#Player">Player</a></li>
+        <li><a href="#Enemies">Enemies</a></li>
+        <li><a href="#Guns">Guns</a></li>
+        <li><a href="#Power Ups">Power Ups</a></li>
+        <li><a href="#Maps">Maps</a></li>
+        <li><a href="#Goals and Experience">Intended Goals and Expected Experience</a></li>
+
+    </ul>
+    <h2>
+        Game Idea and Research
+    </h2>
+    <a name="Game Idea"></a>
+    <p>
+        The idea for this game came from many diffrent things which i will discuss but to start with im going to talk about the research i done in to
+        the HTML5 & JavaScript area. I started with a simple google search "html5 games" unfortunately this lead me to more engines just like Phaser,
+        so i added "JavaScript" to the search...same issue. However that search did give me this site - <a href="http://www.creativebloq.com/html5/top-20-html5-games-1122788">
+        http://www.creativebloq.com/html5/top-20-html5-games-1122788</a>. At this point i had the idea that would become Zomcorp and i just wanted
+        to check if anyone else had done anything similar which i couldn't. I even smuggled to find a everlasting survival game.
+        <br>
+        <br>
+        So my game idea seems original, which is good for me. So back to Zomcorp, the main idea came from binding of isac which is another front facing 2D game.
+        Binding of isac however is an RPG with boss battles and a whole mess of stuff, Zomcorp wont be that big...not to start with at least. Adding to that
+        there was a game i used to play when i was about 13 called <a href="http://armorgames.com/play/58/bubble-tanks">Bubble Tanks</a>. In Bubble Tanks you would
+        travel from bubble to bubble as a bubble shooting other bubble to get bubbles to upgrade your tank, eventually reaching max level and finding the boss. When you were
+        damaged you would lose bubble and even downgrade if you take enough damage. I enjoyed both these games and i wanted to combine their respective elements and add my own
+        ideas to create a fun and interesting survival game.
+    </p>
+    <br>
+    <h2>
+        Game Play
+    </h2>
+    <a name="Game Play"></a>
+    <p>
+        This game will be a front facing 2D survival shooter with player stats, leveling, ammo and a whole other mess of stuff. You will play as Allan an ex enforcer for Zomcorp
+        a company built from death and fear, Zomcorp came in to power a few months after the zombie apocalypse using the zombies they caught to fill their evil maze the labyrinth.
+        Which is where Allan was sent after he disobeyed an order to kill children, Allan will use guns, power ups and leveling to fight through as many hordes of zombies he can.
+        Possibly saving children along the way for extra exp. The game will tell Allan's story through dialogue while playing the game, in an attempt to add immersion and
+        emotional attachment to the game, also this game is intended to be fun and humorous so the dialogue will be light hearted and hopefully funny.
+    </p>
+    <br>
+    <h2>
+        Player
+    </h2>
+    <a name="Player"></a>
+    <p>
+        As i mentioned before the player will play as a character called Allan, in this section we will be talking about Allan's stats and abilities. Allan will be made up of 3 stats
+        Health(HP), Stamina and Ammo Capacity(AC), the player will be able to increase the max value of these stats by doing things like killing zombies to generate experience.
+        When the player levels up he or she will be prompted to pick one of these stats to increase. HP will start 100, stamina will start at 50 and AC will start at 150. If leveled
+        up the stat will increase by 10% of its default, so HP will increase by 10 each level. AC will be explained better in the guns section. Allan will have a base movement speed
+        which can be increased by holding down the space bar to sprint which uses stamina. Stamina will regenerate slowly and can be attributes of stamina can be increased with the use
+        of power ups for example regen speed, regen delay, etc.
+    </p>
+    <br>
+    <h2>
+        Enemies
+    </h2>
+    <a name="Enemies"></a>
+    <p>
+        The initial plan for enemies in Zomcorp is there will be 3 diffrent enemies that player will have to fight through vanilla, suicide and puker. Vanilla zombies will
+        walk in a straight line as much as possible to get to the player and attack him, when vanilla zombies collide with the player they will deal a small amount of damage.
+        Vanilla zombies will walk slightly faster than the player but when the player is running they will be slower. Suicide zombies will act much the same as vanilla zombies
+        in terms of movement but when they collide with the player they will explode dealing damage to everything around them including other zombies. The player can kill suicide
+        zombies and cause this explosion to help himself in sticky situations. Puker zombies will chase the player just like the other two zombies but when the puker zombie attacks
+        the player he will damage him and sap some of his stamina.
+    </p>
+    <br>
+    <h2>
+        Guns
+    </h2>
+    <a name="Guns"></a>
+    <p>
+        The player will start with a pistol that he can use to kill zombies, this pistol will never run out of ammo but it is relatively weak, when killing zombies the player
+        has a chance for zombies to drop guns and other things. Other drops are detailed bellow. The guns zombies can drop are Shotgun, SMG, Rocket Launcher, Dual Pistols(upgrades
+        normal pistols) and Assault Rifle. Each gun will have a fire rate, reload speed, damage count, ammo per bullet and possibly some other attributes. The ammo in this game will
+        be the same for each gun but each gun will use diffrent amounts of ammo for example a pistol might use 1 ammo per bullet and an SMG might use 3 ammo per bullet, the more
+        damage a gun does per bullet the more ammo it uses.
+    </p>
+    <br>
+    <h2>
+        Power Ups
+    </h2>
+    <a name="Power Ups"></a>
+    <p>
+        Power ups will drop from dead zombies and exploded barrels, they will be very useful early and late game helping the player with sticky situations. Once picked up a
+        power up will be used. Power ups can effect everything in the game from gun damage to movement speed so when you get one you never know what your going to get. When
+        picked up some text will pop up with the name of that power up, a small icon with a power up symbol will also appear when a power up is active with a counter of how much
+        time this power up has left. If the player hovers over this icon it will show a small description of that power up however the idea is that the player will have
+        to explore power ups to understand them.
+    </p>
+    <br>
+    <h2>
+        Maps
+    </h2>
+    <a name="Maps"></a>
+    <p>
+        Each "map" in zomcorp will be randomly generated when the player enters the room, there are 3 ways that are a possibility for doing this. One of these ways is to
+        have a "bank" of maps that could be used and i would randomly generate a number that chooses a map. Another way of achieving this is when the player enters a map
+        each tile in that map will be assigned a randomly generated number, this will create a completely random map however this could cause some issues. For example what
+        if 3 walls are generated around the player and he cant complete the level? what if all the zombies get stuck in one area and the player can just walk through? issues
+        like that deter me from that method. The last method is like combining the two, i could create quarter maps which have none of the issues of the second possibility but
+        they are more random than the first. When the player enters the map the game will randomly choose 4 quarters of a map and combine them to create one big map, i do
+        like this idea but i still question the randomness of it as ive seen it done in other games.
+    </p>
+    <br>
+    <h2>
+        Intended Goals and Expected Experience
+    </h2>
+    <a name="Goals and Experience"></a>
+    <p>
+        The main goal of this game is to create a fun little game that can be played over and over again exploring new ways of playing and generally having fun. I would also
+        like to create something that i deem good enough o go into my portfolio that wil be created in a class i have next trimester. But really in the end i just would
+        like to make something people find enjoyable and can use to kill some time and forget about the world for a while.
+
+        As for the expected experience of this game i want to create a light hearted funny game, even if it is about shooting zombies and blowing things up. My main inspiration
+        for this experience was the game Borderlands the pre-sequel created by 2K australia. The one line jokes and the mayhem of that game inspired me to create something that
+        is fun to play but also has nuggets of funny to pull you in further. I also found through the use of meaningful dialog to current situation can improve immersion in the game
+        for example if you blow up a zombie Allan might say "Zombie go bye bye" in a funny voice which is important to the current situation and is hopefully funny in the moment.
+    </p>
+</div>
+</body>
+</html>

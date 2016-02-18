@@ -1,0 +1,68 @@
+
+html,body{
+    height: 100%;
+}
+
+@font-face {
+    font-family: zombie;
+    src: url(PirateZombie.ttf);
+}
+
+body {
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,3891ff+100 */
+    background: rgb(0,0,0); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(0, 0, 0,1) 40%, rgba(194, 0, 2,1) 150%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,rgba(0, 0, 0,1)), color-stop(150%,rgba(194, 0, 2,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0,1) 40%, rgba(194, 0, 2,1) 150%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0, 0, 0,1) 40%, rgba(194, 0, 2,1) 150%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0, 0, 0,1) 40%, rgba(194, 0, 2,1) 150%); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#3891ff',GradientType=0 ); /* IE6-9 */
+
+    background-size: cover;
+
+    display: block;
+    overflow: auto;
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+.nav{
+    margin: 0px;
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+    font-family: zombie;
+    opacity: 0.6;
+}
+.nav:hover{
+    opacity: 1;
+}
+.logo{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+
+.vertLine{
+
+    border-left: thick solid #eeeeee;
+    min-height: 100vh;
+    width: 1px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 0px;
+
+}
+
+.content{
+    margin-top: 0px;
+    overflow: hidden;
+    width: 80%;
+    float: left;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
